@@ -2,6 +2,7 @@
 FROM centos:7
 
 # Create Directory
+RUN mkdir -p /redis/backup
 RUN mkdir -p /redis/conf
 RUN mkdir -p /redis/data
 RUN mkdir -p /redis/log
