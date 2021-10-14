@@ -96,5 +96,3 @@ docker exec $cname sed -i "s/CONF=\"\/etc\/redis\/6379.conf\"/CONF=\"\/redis\/co
 docker exec $cname sed -i "s/REDISPORT=\"6379\"/REDISPORT=\"$cport\"/g" redis_$cport
 
 docker exec $cname ./redis_$cport start
-=======
->>>>>>> d4a3b9f8c5238c3476107eed72dd4d8ceaebd75f
