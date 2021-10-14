@@ -1,21 +1,12 @@
 #! /bin/bash
-<<<<<<< HEAD
 DEFAULTPATH=`pwd`
-=======
->>>>>>> d4a3b9f8c5238c3476107eed72dd4d8ceaebd75f
 
 # Create directory before container creation.
 echo -e "What do you want redis instance name?"
 read rdir
 
-<<<<<<< HEAD
 if [ -e ./redis/$rdir ];then echo check
 	else mkdir -p /redis/$rdir/data /redis/$rdir/log /redis/$rdir/conf /redis/$rdir/backup
-=======
-if [ -d ./redis/$rdir ]
-        then echo "This directory has already been created."
-        else mkdir -p /redis/$rdir/data /redis/$rdir/log /redis/$rdir/conf /redis/$rdir/backup
->>>>>>> d4a3b9f8c5238c3476107eed72dd4d8ceaebd75f
 fi
 
 # Set the local path and container path.
@@ -42,11 +33,7 @@ echo -e "Please choose your container image and tag."
 read dimage dtag
 
 echo -e "--------------------------------------------------------------------------------------"
-<<<<<<< HEAD
 docker run -itd --name $cname --network host -v ${LOCAL_CONTAINER_DATA}:${DOCKER_CONTAINER_DATA} -v ${LOCAL_CONTAINER_LOG}:${DOCKER_CONTAINER_LOG} -v ${LOCAL_CONTAINER_CONF}:${DOCKER_CONTAINER_CONF} -v ${LOCAL_CONTAINER_BACKUP}:${DOCKER_CONTAINER_BACKUP} $dimage:$dtag /bin/bash
-=======
-docker run -itd --name $cname -v ${LOCAL_CONTAINER_DATA}:${DOCKER_CONTAINER_DATA} -v ${LOCAL_CONTAINER_LOG}:${DOCKER_CONTAINER_LOG} -v ${LOCAL_CONTAINER_CONF}:${DOCKER_CONTAINER_CONF} -v ${LOCAL_CONTAINER_BACKUP}:${DOCKER_CONTAINER_BACKUP} $dimage:$dtag /bin/bash
->>>>>>> d4a3b9f8c5238c3476107eed72dd4d8ceaebd75f
 echo -e "--------------------------------------------------------------------------------------"
 docker ps -a
 echo -e "--------------------------------------------------------------------------------------"
@@ -60,7 +47,6 @@ echo -e "Show $cname process list for redis."
 docker exec $cname ps -ef | grep redis 
 echo -e "--------------------------------------------------------------------------------------"
 
-<<<<<<< HEAD
 # Change redis conf
 # [Redis_Conf] Change the Bind(IP)
 echo -e "What do you want to change bind?"

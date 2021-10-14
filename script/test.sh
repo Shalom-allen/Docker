@@ -1,3 +1,3 @@
-sadasdasDEFAULTPATH=`pwd`
+DEFAULTPATH=`pwd`
 
 cd $DEFAULTPATH

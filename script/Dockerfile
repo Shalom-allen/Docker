@@ -18,12 +18,4 @@ RUN make
 RUN make install
 WORKDIR /redis/redis-6.2.5/utils
 RUN ./install_server.sh 
-<<<<<<< HEAD
 WORKDIR /etc/init.d/
-=======
-
-# Start Redis
-WORKDIR /etc/init.d/
-RUN ./redis_6379 start
-RUN ps -ef | grep redis
->>>>>>> d4a3b9f8c5238c3476107eed72dd4d8ceaebd75f
