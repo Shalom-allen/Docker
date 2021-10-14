@@ -1,0 +1,3 @@
+DEFAULTPATH=`pwd`
+
+cd $DEFAULTPATH
