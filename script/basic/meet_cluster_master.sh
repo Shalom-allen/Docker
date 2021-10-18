@@ -16,7 +16,7 @@ docker exec $cname1 redis-cli -h $ip3 -p $port3 cluster meet $ip1 $port1
 echo -e "Sockets are automatically distributed in increments of 5461."
 docker exec $cname1 redis-cli -h $ip1 -p $port1 cluster addslots {0..5461}
 docker exec $cname1 redis-cli -h $ip2 -p $port2 cluster addslots {5462..10922}
-docker exec $cname1 redis-cli -h $ip3 -p $port3 cluster addslots {10923..16383}
+docker exec $cname1 redis-cli -h $ip3 -p $port3 cluster addslots {10923..16384}
 
 # Check the Redis Cluster
 docker exec $cname1 redis-cli --cluster check $ip1:$port1
