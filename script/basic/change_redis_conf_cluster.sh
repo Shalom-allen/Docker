@@ -1,3 +1,11 @@
+#!/bin/bash
+
+# [Redis_Conf] Set the container path.
+DOCKER_CONTAINER_DATA="/redis/data"
+DOCKER_CONTAINER_LOG="/redis/log"
+DOCKER_CONTAINER_CONF="/redis/conf"
+
+# [Redis_Conf] Change the Bind(IP)
 echo -e "What do you want to change bind?"
 read cbind
 
