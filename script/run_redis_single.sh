@@ -66,9 +66,13 @@ sed "s/logfile \/var\/log\/redis_6379.log/logfile \/redis\/log\/redis_$cport.log
 rm -rf /root/test_git/result/redis2.conf
 
 # [Redis_Conf] Change the Datadir
-sed "s/dir \/var\/lib\/redis\/6379/dir \/redis\/data/g" /root/test_git/result/redis3.conf >> /root/test_git/result/redis_$cport.conf
+sed "s/dir \/var\/lib\/redis\/6379/dir \/redis\/data/g" /root/test_git/result/redis3.conf >> /root/test_git/result/redis4.conf
 
 rm -rf /root/test_git/result/redis3.conf
+
+sed "s/pidfile \/var\/run\/redis_6379.pid/pidfile \/var\/run\/redis_$cport.pid/g" /root/test_git/result/redis4.conf >> /root/test_git/result/redis_$cport.conf
+
+rm -rf /root/test_git/result/redis4.conf
 
 # Move the redis conf
 cp $DEFAULTPATH/result/redis_$cport.conf /redis/$rdir/conf

@@ -70,26 +70,17 @@ sed "s/dir \/var\/lib\/redis\/6379/dir \/redis\/data/g" /root/test_git/result/re
 
 rm -rf /root/test_git/result/redis3.conf
 
-# [Redis_Conf] Change the cluster
-sed "s/^# cluster-enabled yes/cluster-enabled yes/g" /root/test_git/result/redis4.conf >> /root/test_git/result/redis5.conf
+# [Redis_Conf] setting for Replication
+echo -e "Please write down the master IP and master port you want to designate."
+read masterip masterport
+
+sed "s/^# replicaof <masterip> <masterport>/replicaof $masterip $masterport/g" /root/test_git/result/redis4.conf >> /root/test_git/result/redis5.conf
 
 rm -rf /root/test_git/result/redis4.conf
 
-sed "s/^# cluster-config-file nodes-6379.conf/cluster-config-file nodes-$cport.conf/g" /root/test_git/result/redis5.conf >> /root/test_git/result/redis6.conf
+sed "s/pidfile \/var\/run\/redis_6379.pid/pidfile \/var\/run\/redis_$cport.pid/g" /root/test_git/result/redis5.conf >> /root/test_git/result/redis_$cport.conf
 
 rm -rf /root/test_git/result/redis5.conf
-
-sed "s/^# cluster-node-timeout 15000/cluster-node-timeout 3000/g" /root/test_git/result/redis6.conf >> /root/test_git/result/redis7.conf
-
-rm -rf /root/test_git/result/redis6.conf
-
-sed "s/^# cluster-replica-validity-factor 10/cluster-replica-validity-factor 0/g" /root/test_git/result/redis7.conf >> /root/test_git/result/redis8.conf
-
-rm -rf /root/test_git/result/redis7.conf
-
-sed "s/pidfile \/var\/run\/redis_6379.pid/pidfile \/var\/run\/redis_$cport.pid/g" /root/test_git/result/redis8.conf >> /root/test_git/result/redis_$cport.conf
-
-rm -rf /root/test_git/result/redis8.conf
 
 # Move the redis conf
 cp $DEFAULTPATH/result/redis_$cport.conf /redis/$rdir/conf
