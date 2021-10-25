@@ -6,19 +6,19 @@ echo -e "What do you want redis instance name?"
 read rdir
 
 if [ -e ./redis/$rdir ];then echo check
-	else mkdir -p /redis/$rdir/data /redis/$rdir/log /redis/$rdir/conf /redis/$rdir/backup
+	else mkdir -p /redis/$rdir/data /redis/$rdir/log /redis/$rdir/conf /redis/$rdir/work
 fi
 
 # Set the local path and container path.
 LOCAL_CONTAINER_DATA="/redis/$rdir/data"
 LOCAL_CONTAINER_LOG="/redis/$rdir/log"
 LOCAL_CONTAINER_CONF="/redis/$rdir/conf"
-LOCAL_CONTAINER_BACKUP="/redis/$rdir/backup"
+LOCAL_CONTAINER_BACKUP="/redis/$rdir/work"
 
 DOCKER_CONTAINER_DATA="/redis/data"
 DOCKER_CONTAINER_LOG="/redis/log"
 DOCKER_CONTAINER_CONF="/redis/conf"
-DOCKER_CONTAINER_BACKUP="/redis/backup"
+DOCKER_CONTAINER_BACKUP="/redis/work"
 
 # Run Dockerfile for to create docker container.
 echo
