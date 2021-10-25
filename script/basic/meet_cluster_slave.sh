@@ -29,3 +29,7 @@ docker exec $cname3 redis-cli --cluster add-node $sip3:$sport3 $mip3:$mport3 --c
 
 # Check the Redis Cluster
 docker exec $cname1 redis-cli --cluster check $sip1:$sport1
+docker exec $cname1 redis-cli --cluster check $sip1:$sport1 > /redis/$cname1/work/default_cluster_$sport1.txt
+docker exec $cname2 redis-cli --cluster check $sip2:$sport2 > /redis/$cname2/work/default_cluster_$sport2.txt
+docker exec $cname3 redis-cli --cluster check $sip3:$sport3 > /redis/$cname3/work/default_cluster_$sport3.txt
+
