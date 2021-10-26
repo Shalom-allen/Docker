@@ -1,8 +1,7 @@
-echo -e "================================================================================================"
-echo -e "Docker Container List."
+echo -e "# Docker Container List."
 docker ps -a
 echo -e "================================================================================================"
-echo -e "Redis Process List"
+echo -e "# Redis Process List"
 ps -ef | grep redis
 echo -e "================================================================================================"
 echo -e "Enter the Docker container information you want to compare.(container, ip, port)"
