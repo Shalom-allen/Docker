@@ -23,8 +23,6 @@ echo -e "Please enter the information you wish to failover.(container, ip, port)
 read cname cip cport
 docker exec $cname redis-cli -h $cip -p $cport cluster failover
 
-docker exec $cname redis-cli --cluster check $cip:$cport
-
 rm -rf /redis/$tname/work/${TimeForm}_cluster_$tport.txt
 
 # Check the Cluster node
