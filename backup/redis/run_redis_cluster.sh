@@ -75,7 +75,7 @@ sed "s/^# cluster-enabled yes/cluster-enabled yes/g" /root/test_git/result/redis
 
 rm -rf /root/test_git/result/redis4.conf
 
-sed "s/^# cluster-config-file nodes-6379.conf/cluster-config-file \/redis\/conf\/nodes-$cport.conf/g" /root/test_git/result/redis5.conf >> /root/test_git/result/redis6.conf
+sed "s/^# cluster-config-file nodes-6379.conf/cluster-config-file /redis/$rdir/conf/nodes-$cport.conf/g" /root/test_git/result/redis5.conf >> /root/test_git/result/redis6.conf
 
 rm -rf /root/test_git/result/redis5.conf
 
@@ -101,5 +101,3 @@ docker exec $rdir sed -i "s/CONF=\"\/etc\/redis\/6379.conf\"/CONF=\"\/redis\/con
 docker exec $rdir sed -i "s/REDISPORT=\"6379\"/REDISPORT=\"$cport\"/g" redis_$cport
 
 docker exec $rdir ./redis_$cport start
-
-ps -ef | grep redis
