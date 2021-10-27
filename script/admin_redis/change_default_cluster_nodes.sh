@@ -1,17 +1,15 @@
-echo -e "# Docker Container List."
+# Update the default file.
+echo -e "Docker Container List."
 docker ps -a
 echo -e "================================================================================================"
-echo -e "# Redis Process List"
+echo -e "Redis Process List"
 ps -ef | grep redis
 echo -e "================================================================================================"
-
-echo Write the container name of 3 node the cluster.
+echo -e "Enter the Docker container information(container)"
 read dname1 dname2 dname3
-
-echo -e "Write the IP of the 3 nodes to connect the cluster."
+echo -e "Enter the Docker container information(ip)"
 read dip1 dip2 dip3
-
-echo -e "Write the port of the 3 nodes to connect the cluster."
+echo -e "Enter the Docker container information(port)"
 read dport1 dport2 dport3
 
 docker exec $dname1 redis-cli --cluster check $dip1:$dport1 > /redis/$dname1/work/default_cluster_$dport1.txt

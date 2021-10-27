@@ -31,21 +31,4 @@ echo -e "=======================================================================
 diff -cs /redis/$cname/work/default_cluster_$cport.txt /redis/$cname/work/failover_cluster_$cport.txt
 echo -e "================================================================================================"
 
-# Update the default file.
-echo -e "Docker Container List."
-docker ps -a
-echo -e "================================================================================================"
-echo -e "Redis Process List"
-ps -ef | grep redis
-echo -e "================================================================================================"
-echo -e "Enter the Docker container information(container)"
-read name1 name2 name3
-echo -e "Enter the Docker container information(ip)"
-read ip1 ip2 ip3
-echo -e "Enter the Docker container information(port)"
-read port1 port2 port3
-
-docker exec $name1 redis-cli --cluster check $ip1:$port1 > /redis/$name1/work/default_cluster_$port1.txt
-docker exec $name2 redis-cli --cluster check $ip2:$port2 > /redis/$name2/work/default_cluster_$port2.txt
-docker exec $name3 redis-cli --cluster check $ip3:$port3 > /redis/$name3/work/default_cluster_$port3.txt
 
