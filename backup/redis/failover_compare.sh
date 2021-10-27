@@ -24,11 +24,12 @@ read cname cip cport
 docker exec $cname redis-cli -h $cip -p $cport cluster failover
 
 docker exec $cname redis-cli --cluster check $cip:$cport
-docker exec $cname redis-cli --cluster check $cip:$cport > /redis/$cname/work/failover_cluster_$cport.txt
 
-# Compare file
+rm -rf /redis/$tname/work/${TimeForm}_cluster_$tport.txt
+
+# Check the Cluster node
 echo -e "================================================================================================"
-diff -cs /redis/$cname/work/default_cluster_$cport.txt /redis/$cname/work/failover_cluster_$cport.txt
+docker exec $cname redis-cli --cluster check $cip:$cport
 echo -e "================================================================================================"
 
 
