@@ -28,7 +28,4 @@ docker exec $cname1 redis-cli -h $ip3 -p $port3 cluster addslots {10923..16383}
 
 # Check the Redis Cluster
 docker exec $cname1 redis-cli --cluster check $ip1:$port1
-docker exec $cname1 redis-cli --cluster check $ip1:$port1 > /redis/$cname1/work/default_cluster_$port1.txt
-docker exec $cname2 redis-cli --cluster check $ip2:$port2 > /redis/$cname2/work/default_cluster_$port2.txt
-docker exec $cname3 redis-cli --cluster check $ip3:$port3 > /redis/$cname3/work/default_cluster_$port3.txt
 
