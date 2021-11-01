@@ -92,3 +92,9 @@ docker exec $rdir sed -i "s/CONF=\"\/etc\/redis\/6379.conf\"/CONF=\"\/redis\/con
 docker exec $rdir sed -i "s/REDISPORT=\"6379\"/REDISPORT=\"$cport\"/g" redis_$cport
 
 docker exec $rdir ./redis_$cport start
+
+ps -ef | grep redis
+
+# Check the redis slave status
+
+

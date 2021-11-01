@@ -21,9 +21,9 @@ rm -rf /root/test_git/result/sentinel1.conf
 
 # [Sentinel_Conf] Change the monitor setting
 echo -e "# Setting the sentinel monitoring(master_IP master_port quorum)"
-read cip cport cquo
+read mip mport mquo
 
-sed "s/sentinel monitor mymaster 127.0.0.1 6379 2/sentinel monitor mymaster $cip $cport $cquo/g" /root/test_git/result/sentinel2.conf >> /root/test_git/result/sentinel3.conf
+sed "s/sentinel monitor mymaster 127.0.0.1 6379 2/sentinel monitor mymaster $mip $mport $mquo/g" /root/test_git/result/sentinel2.conf >> /root/test_git/result/sentinel3.conf
 
 rm -rf /root/test_git/result/sentinel2.conf
 
@@ -47,7 +47,7 @@ rm -rf /root/test_git/result/sentinel6.conf
 sed "s/^# protected-mode no/protected-mode yes/g" /root/test_git/result/sentinel7.conf >> /root/test_git/result/sentinel8.conf
 rm -rf /root/test_git/result/sentinel7.conf
 
-sed "s/daemonize no/daemonize yes/g" /root/test_git/result/sentinel8.conf >> /root/test_git/result/sentinel.conf
+sed "s/daemonize no/daemonize yes/g" /root/test_git/result/sentinel8.conf >> /root/test_git/result/sentinel_$cport.conf
 rm -rf /root/test_git/result/sentinel8.conf
 
 
