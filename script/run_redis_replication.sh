@@ -96,5 +96,5 @@ docker exec $rdir ./redis_$cport start
 ps -ef | grep redis
 
 # Check the redis slave status
-
+docker exec $rdir redis-cli -h $cbind -p $cport info replication
 
