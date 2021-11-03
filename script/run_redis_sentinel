@@ -104,3 +104,7 @@ docker exec $rdir sed -i "s/REDISPORT=\"6379\"/REDISPORT=\"$cport\"/g" redis_$cp
 docker exec $rdir ./redis_$cport start
 
 ps -ef | grep redis
+
+sleep 1
+
+docker exec $rdir redis-cli -h $cbind -p $cport info sentinel
