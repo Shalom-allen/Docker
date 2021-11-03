@@ -30,15 +30,15 @@ diff -cs /redis/$tname/work/cluster_node_status_default.txt /redis/$tname/work/c
 echo -e "================================================================================================"
 
 # Perform failover.
-echo -e "Please enter the information you wish to failover.(container, ip, port)"
-read cname cip cport
-docker exec $cname redis-cli -h $cip -p $cport cluster failover
+echo -e "Please enter the information you wish to failover.(ip, port)"
+read cip cport
+docker exec $tname redis-cli -h $cip -p $cport cluster failover
 
 rm -rf /redis/$tname/work/${TimeForm}_cluster_$tport.txt
 
 # Check the Cluster node
 echo -e "================================================================================================"
-docker exec $cname redis-cli --cluster check $cip:$cport > /redis/$tname/work/cluster_node_status_after\_1.txt
+docker exec $tname redis-cli --cluster check $cip:$cport > /redis/$tname/work/cluster_node_status_after\_1.txt
 cat /redis/$tname/work/cluster_node_status_after\_1.txt | cut -d '>' -f 1 | cut -d '[' -f 1 > /redis/$tname/work/cluster_node_status_after\_2.txt
 rm -rf /redis/$tname/work/cluster_node_status_after\_1.txt
 sed '1,6d' /redis/$tname/work/cluster_node_status_after\_2.txt > /redis/$tname/work/cluster_node_status_after\_3.txt
@@ -57,3 +57,4 @@ rm -rf /redis/$tname/work/cluster_node_status_before.txt
 rm -rf /redis/$tname/work/cluster_node_status_after.txt
 echo -e "================================================================================================"
 
+docker exec $tname redis-cli --cluster check $tip:$tport
