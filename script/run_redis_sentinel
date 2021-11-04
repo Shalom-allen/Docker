@@ -82,7 +82,7 @@ rm -rf /root/docker_redis/result/sentinel4.conf
 sed "s/dir \/tmp/dir \/redis\/data/g" /root/docker_redis/result/sentinel5.conf >> /root/docker_redis/result/sentinel6.conf
 rm -rf /root/docker_redis/result/sentinel5.conf
 
-sed "s/pidfile \/var\/run\/redis-sentinel.pid/pidfile \/redis\/data\/sentinel_$cport.pid/g" /root/docker_redis/result/sentinel6.conf >> /root/docker_redis/result/sentinel7.conf
+sed "s/pidfile \/var\/run\/redis-sentinel.pid/pidfile \/var\/run\/sentinel_$cport.pid/g" /root/docker_redis/result/sentinel6.conf >> /root/docker_redis/result/sentinel7.conf
 rm -rf /root/docker_redis/result/sentinel6.conf
 
 sed "s/^# protected-mode no/protected-mode yes/g" /root/docker_redis/result/sentinel7.conf >> /root/docker_redis/result/sentinel8.conf
