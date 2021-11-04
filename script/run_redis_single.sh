@@ -70,7 +70,7 @@ sed "s/dir \/var\/lib\/redis\/6379/dir \/redis\/data/g" /root/docker_redis/resul
 
 rm -rf /root/docker_redis/result/redis3.conf
 
-sed "s/pidfile \/var\/run\/redis_6379.pid/pidfile \/var\/run\/redis_$cport.pid/g" /root/docker_redis/result/redis4.conf >> /root/docker_redis/result/redis_$cport.conf
+sed "s/pidfile \/var\/run\/redis_6379.pid/pidfile \/redis\/data\/redis_$cport.pid/g" /root/docker_redis/result/redis4.conf >> /root/docker_redis/result/redis_$cport.conf
 
 rm -rf /root/docker_redis/result/redis4.conf
 
@@ -79,7 +79,7 @@ cp $DEFAULTPATH/result/redis_$cport.conf /redis/$rdir/conf
 
 docker exec $rdir ./redis_6379 stop
 docker exec $rdir mv redis_6379 redis_$cport
-docker exec $rdir sed -i "s/PIDFILE=\/var\/run\/redis_6379.pid/PIDFILE=\/var\/run\/redis_$cport.pid/g" redis_$cport
+docker exec $rdir sed -i "s/PIDFILE=\/var\/run\/redis_6379.pid/PIDFILE=\/redis\/data\/redis_$cport.pid/g" redis_$cport
 docker exec $rdir sed -i "s/CONF=\"\/etc\/redis\/6379.conf\"/CONF=\"\/redis\/conf\/redis\_$cport.conf\"/g" redis_$cport
 docker exec $rdir sed -i "s/REDISPORT=\"6379\"/REDISPORT=\"$cport\"/g" redis_$cport
 

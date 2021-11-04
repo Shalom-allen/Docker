@@ -82,7 +82,7 @@ rm -rf /root/docker_redis/result/sentinel4.conf
 sed "s/dir \/tmp/dir \/redis\/data/g" /root/docker_redis/result/sentinel5.conf >> /root/docker_redis/result/sentinel6.conf
 rm -rf /root/docker_redis/result/sentinel5.conf
 
-sed "s/pidfile \/var\/run\/redis-sentinel.pid/pidfile \/var\/run\/sentinel_$cport.pid/g" /root/docker_redis/result/sentinel6.conf >> /root/docker_redis/result/sentinel7.conf
+sed "s/pidfile \/var\/run\/redis-sentinel.pid/pidfile \/redis\/data\/sentinel_$cport.pid/g" /root/docker_redis/result/sentinel6.conf >> /root/docker_redis/result/sentinel7.conf
 rm -rf /root/docker_redis/result/sentinel6.conf
 
 sed "s/^# protected-mode no/protected-mode yes/g" /root/docker_redis/result/sentinel7.conf >> /root/docker_redis/result/sentinel8.conf
@@ -97,7 +97,7 @@ cp $DEFAULTPATH/result/sentinel_$cport.conf /redis/$rdir/conf/sentinel_$cport.co
 docker exec $rdir ./redis_6379 stop
 docker exec $rdir mv redis_6379 redis_$cport
 docker exec $rdir sed -i "s/EXEC=\/usr\/local\/bin\/redis-server/EXEC=\/usr\/local\/bin\/redis-sentinel/g" redis_$cport
-docker exec $rdir sed -i "s/PIDFILE=\/var\/run\/redis_6379.pid/PIDFILE=\/redis\/data\/redis_$cport.pid/g" redis_$cport
+docker exec $rdir sed -i "s/PIDFILE=\/var\/run\/redis_6379.pid/PIDFILE=\/redis\/data\/sentinel_$cport.pid/g" redis_$cport
 docker exec $rdir sed -i "s/CONF=\"\/etc\/redis\/6379.conf\"/CONF=\"\/redis\/conf\/sentinel_$cport.conf\"/g" redis_$cport
 docker exec $rdir sed -i "s/REDISPORT=\"6379\"/REDISPORT=\"$cport\"/g" redis_$cport
 

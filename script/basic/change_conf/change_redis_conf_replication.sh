@@ -37,7 +37,7 @@ sed "s/^# replicaof <masterip> <masterport>/replicaof $masterip $masterport/g" /
 
 rm -rf /root/docker_redis/result/redis4.conf
 
-sed "s/pidfile \/var\/run\/redis_6379.pid/pidfile \/var\/run\/redis_$cport.pid/g" /root/docker_redis/result/redis5.conf >> /root/docker_redis/result/redis_$cport.conf
+sed "s/pidfile \/var\/run\/redis_6379.pid/pidfile \/redis\/data\/redis_$cport.pid/g" /root/docker_redis/result/redis5.conf >> /root/docker_redis/result/redis_$cport.conf
 
 rm -rf /root/docker_redis/result/redis5.conf
 

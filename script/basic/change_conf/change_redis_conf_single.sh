@@ -29,6 +29,6 @@ sed "s/dir \/var\/lib\/redis\/6379/dir \/redis\/data/g" /root/docker_redis/resul
 
 rm -rf /root/docker_redis/result/redis3.conf
 
-sed "s/pidfile \/var\/run\/redis_6379.pid/pidfile \/var\/run\/redis_$cport.pid/g" /root/docker_redis/result/redis4.conf >> /root/docker_redis/result/redis_$cport.conf
+sed "s/pidfile \/var\/run\/redis_6379.pid/pidfile \/redis\/data\/redis_$cport.pid/g" /root/docker_redis/result/redis4.conf >> /root/docker_redis/result/redis_$cport.conf
 
 rm -rf /root/docker_redis/result/redis4.conf
