@@ -1,4 +1,5 @@
 TimeForm=`date +"%Y%m%d"`
+FAILOVERTIME=`date +"%Y-%m-%d %H:%M:%S"`
 
 # Search Docker & Redis Cluster List.
 echo -e "Docker Container List."
@@ -34,6 +35,8 @@ echo -e "Please enter the information you wish to failover.(ip, port)"
 read cip cport
 docker exec $tname redis-cli -h $cip -p $cport cluster failover
 
+echo "FailOverTime : ${FAILOVERTIME}" >> /redis/$tname/work/failover_timeline.txt
+
 rm -rf /redis/$tname/work/${TimeForm}_cluster_$tport.txt
 
 # Check the Cluster node
@@ -53,8 +56,10 @@ rm -rf /redis/$tname/work/cluster_node_status_after\_4.txt
 
 diff -cs /redis/$tname/work/cluster_node_status_default.txt /redis/$tname/work/cluster_node_status_after.txt
 
-rm -rf /redis/$tname/work/cluster_node_status_before.txt
-rm -rf /redis/$tname/work/cluster_node_status_after.txt
+echo -e "================================================================================================"
+cat /redis/$tname/work/cluster_node_status_after.txt
 echo -e "================================================================================================"
 
-docker exec $tname redis-cli --cluster check $tip:$tport
+rm -rf /redis/$tname/work/cluster_node_status_before.txt
+rm -rf /redis/$tname/work/cluster_node_status_after.txt
+
