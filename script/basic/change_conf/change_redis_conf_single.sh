@@ -1,4 +1,14 @@
 #!/bin/bash
+# --------------------------------------------------------------
+#       Docker & Redis Control
+#                                        Ver. 1.0
+#
+#                                        Date 2021-11-09
+#                                Create by Yoo Min Sang
+#
+#
+#
+# --------------------------------------------------------------
 
 # [Redis_Conf] Set the container path.
 DOCKER_CONTAINER_DATA="/redis/data"
@@ -9,7 +19,7 @@ DOCKER_CONTAINER_CONF="/redis/conf"
 echo -e "What do you want to change bind?"
 read cbind
 
-sed "s/bind 127.0.0.1 -::1/bind $cbind 127.0.0.1 -::1/g" /root/docker_redis/default/redis.conf > /root/docker_redis/result/redis1.conf
+sed "s/bind 127.0.0.1 -::1/bind $cbind 127.0.0.1 -::1/g" /root/docker_redis/default/redis/redis.conf > /root/docker_redis/result/redis1.conf
 
 # [Redis_Conf] Change the Port
 echo -e "What do you want to change the port?"

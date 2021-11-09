@@ -1,3 +1,15 @@
+#!/bin/bash
+# --------------------------------------------------------------
+#       Docker & Redis Control
+#                                        Ver. 1.0
+#
+#                                        Date 2021-11-09
+#                                Create by Yoo Min Sang
+#
+#
+#
+# --------------------------------------------------------------
+
 # Meet Cluster Container
 echo -e "================================================================================================"
 echo -e "Docker Container List. Choose contanier name for redis cluster"
