@@ -10,6 +10,7 @@
 #
 # --------------------------------------------------------------
 
+Time=`date +"%F-%A"`
 TimeForm=`date +"%Y%m%d"`
 FAILOVERTIME=`date +"%Y-%m-%d %H:%M:%S"`
 
@@ -43,11 +44,17 @@ diff -cs /redis/$tname/work/cluster_node_status_default.txt /redis/$tname/work/c
 echo -e "================================================================================================"
 
 # Perform failover.
-echo -e "Please enter the information you wish to failover.(ip, port)"
+echo -e "Please enter the source information you wish to failover.(ip, port)"
+read sip sport
+echo -e "Please enter the target information you wish to failover.(ip, port)"
 read cip cport
+
 docker exec $tname redis-cli -h $cip -p $cport cluster failover
 
-echo "FailOverTime : ${FAILOVERTIME}" >> /redis/$tname/work/failover_timeline.txt
+echo "# ${Time}
+Excuted Container : $tname
+Changed Container IP:PORT : $sip:$sport -> $cip:$cport
+FailOverTime : ${FAILOVERTIME}" >> /redis/$tname/work/failover_timeline.txt
 
 rm -rf /redis/$tname/work/${TimeForm}_cluster_$tport.txt
 
