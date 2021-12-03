@@ -29,7 +29,7 @@ rm -rf /redis/$dname1/work/node1_2.txt
 sed -i '/1 additional/d' /redis/$dname1/work/node1_3.txt
 sed -i '/slots:/d' /redis/$dname1/work/node1_3.txt
 sed -i '/replicates/d' /redis/$dname1/work/node1_3.txt
-sort /redis/$dname1/work/node1_3.txt | sort -k 3 > /redis/$dname1/work/node1_4.txt
+sort /redis/$dname1/work/node1_3.txt | sort -t ":" -k 3 > /redis/$dname1/work/node1_4.txt
 rm -rf /redis/$dname1/work/node1_3.txt
 sed '1,4d' /redis/$dname1/work/node1_4.txt > /redis/$dname1/work/cluster_node_status_default.txt
 rm -rf /redis/$dname1/work/node1_4.txt
